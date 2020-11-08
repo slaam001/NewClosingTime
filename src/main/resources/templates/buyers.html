@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+
+        <meta charset = "UTF-8">
+        <title>Closing Time - Buyers</title>
+
+    </head>
+
+    <body>
+
+        <h1>Buyers Controller</h1>
+
+        <table>
+            <tr>
+                <th>Buyer id:</th>
+                <th>Buyer firstName:</th>
+                <th>Buyer lastName:</th>
+                <th>Buyer email:</th>
+            </tr>
+
+            <tr th:each="buyer : ${buyers}">
+                <td th:text="${buyer.id}"></td>
+                <td th:text="${buyer.firstName}"></td>
+                <td th:text="${buyer.lastName}"></td>
+                <td th:text="${buyer.email}"></td>
+            </tr>
+        </table>
+
+    </body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+
+        <meta charset = "UTF-8">
+        <title th:text="${buyer.firstName} + ' ' + ${buyer.lastName}"></title>
+
+    </head>
+
+    <body>
+
+        <h1 th:text="'User Profile for: ' + ${buyer.firstName} + ' ' + ${buyer.lastName}"></h1>
+        <h3 th:text="${buyer.firstName}"></h3>
+        <h3 th:text="${buyer.lastName}"></h3>
+        <h3 th:text="${buyer.email}"></h3>
+
+    </body>
+
+</html>
