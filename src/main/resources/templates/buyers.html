@@ -26,6 +26,7 @@
                 <td th:text="${buyer.firstName}"></td>
                 <td th:text="${buyer.lastName}"></td>
                 <td th:text="${buyer.email}"></td>
+                <td> <a href="#" th:href="@{/buyers/{id}(id=${buyer.id})}"> <button>See buyer details</button> </a> </td>
             </tr>
         </table>
 
