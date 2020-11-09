@@ -19,9 +19,7 @@ public class BuyerDAO {
 
     public Buyer getBuyer(String id) { return repository.findById(id).orElse(null); }
 
-    public void updateBuyer(Buyer buyer) {
-        repository.save(buyer);
-    }
+    public void updateBuyer(Buyer buyer) { repository.save(buyer); }
 
     public void deleteBuyer(String id) { repository.deleteById(id); }
 

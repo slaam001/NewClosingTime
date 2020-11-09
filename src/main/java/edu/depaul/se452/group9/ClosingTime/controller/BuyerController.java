@@ -43,8 +43,11 @@ public class BuyerController {
         return "buyer/editbuyer";
     }
 
-    @PutMapping() // edit buyer
-    public void updateBuyer(@RequestBody Buyer buyer) { buyerDAO.updateBuyer(buyer); }
+    @PostMapping("/buyers/edit") // edit buyer
+    public String updateBuyer(@ModelAttribute Buyer buyer) {
+        buyerDAO.updateBuyer(buyer);
+        return "redirect:/buyers";
+    }
 
     @DeleteMapping("/buyers/delete/{id}") // delete buyer
     public String deleteBuyer(@PathVariable("id") String id) {

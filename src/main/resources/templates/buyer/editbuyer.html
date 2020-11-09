@@ -11,6 +11,19 @@
 
     <body>
 
+        <h1>Edit Profile</h1>
+
+        <form action="#" th:action="@{/buyers/edit}" th:object="${buyer}" method="post">
+            <label>First Name: </label>
+            <input type="text" th:field="*{firstName}"/> <br/>
+            <label>Last Name: </label>
+            <input type="text" th:field="*{lastName}"/> <br/>
+            <label>Email: </label>
+            <input type="text" th:field="*{email}"/> <br/>
+
+            <input type="submit" value="Save"/>
+        </form>
+
     </body>
 
 </html>
