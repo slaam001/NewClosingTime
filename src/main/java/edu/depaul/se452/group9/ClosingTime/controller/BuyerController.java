@@ -13,27 +13,43 @@ public class BuyerController {
     @Autowired
     private BuyerDAO buyerDAO;
 
-    @PostMapping
-    public Buyer createBuyer(@RequestBody Buyer buyer) { return buyerDAO.createBuyer(buyer); }
+    @GetMapping("/buyers/signup") // render signup page for buyer
+    public String newBuyer(Model model) {
+        model.addAttribute("buyer", new Buyer());
+        return "buyer/newbuyer";
+    }
 
-    @GetMapping("/buyers")
+    @PostMapping("/buyers/signup") // signup new buyer
+    public String createBuyer(@ModelAttribute Buyer buyer) {
+        buyerDAO.createBuyer(buyer);
+        return "redirect:/buyers";
+    }
+
+    @GetMapping("/buyers") // show all buyers
     public String getBuyers(Model model) {
         model.addAttribute("buyers", buyerDAO.getBuyers());
-        return "buyers";
+        return "buyer/buyers";
     }
 
-    @GetMapping("/buyers/{id}")
+    @GetMapping("/buyers/{id}") // show single buyer
     public String getBuyer(@PathVariable("id") String id, Model model) {
         model.addAttribute("buyer", buyerDAO.getBuyer(id));
-        return "buyer";
+        return "buyer/buyer";
     }
 
-    @PutMapping("/buyers/edit/{id}")
-    public void updateBuyer(@PathVariable("id") String id, @RequestBody Buyer buyer) {
-        buyerDAO.updateBuyer(id, buyer);
+    @GetMapping("/buyers/edit/{id}") // render edit page for buyer
+    public String editBuyer(@PathVariable("id") String id, Model model) {
+        model.addAttribute("buyer", buyerDAO.getBuyer(id));
+        return "buyer/editbuyer";
     }
 
-    @DeleteMapping("/buyers/delete/{id}")
-    public void deleteBuyer(@PathVariable("id") String id) { buyerDAO.deleteBuyer(id); }
+    @PutMapping() // edit buyer
+    public void updateBuyer(@RequestBody Buyer buyer) { buyerDAO.updateBuyer(buyer); }
+
+    @DeleteMapping("/buyers/delete/{id}") // delete buyer
+    public String deleteBuyer(@PathVariable("id") String id) {
+        buyerDAO.deleteBuyer(id);
+        return "redirect:/buyers";
+    }
 
 }

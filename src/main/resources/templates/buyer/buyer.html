@@ -15,6 +15,8 @@
         <h3 th:text="${buyer.firstName}"></h3>
         <h3 th:text="${buyer.lastName}"></h3>
         <h3 th:text="${buyer.email}"></h3>
+        <a href="#" th:href="@{/buyers/edit/{id}(id=${buyer.id})}"><button>Edit details</button> </a>
+        <a href="#" th:href="@{/buyers/delete/{id}(id=${buyer.id})}"><button>Delete Profile</button> </a>
 
     </body>
 
