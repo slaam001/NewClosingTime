@@ -9,5 +9,4 @@ public class ClosingTimeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ClosingTimeApplication.class, args);
 	}
-
 }
